@@ -18,6 +18,16 @@ class Form
     @output += "\n#{new_output}"
   end
 
+  def send_message
+    result = @client.generate(
+      { model: @selected_model,
+        prompt: input,
+        stream: false }
+    )
+    self.input = ''
+    self.output = result[0]['response']
+  end
+
   def launch
     @selected_model = 'llama3.2:latest'
 
@@ -30,7 +40,7 @@ class Form
       'api/tags',
       request_method: 'GET',
       server_sent_events: true
-    )[0]['models'].map { |item| pp item['model'] }
+    )[0]['models'].map { |item| item['model'] }
 
     window('Brain', 800, 600) do
       vertical_box do
@@ -56,12 +66,7 @@ class Form
           stretchy false
 
           on_clicked do
-            result = @client.generate(
-              { model: @selected_model,
-                prompt: input,
-                stream: false }
-            )
-            self.output = result[0]['response']
+            send_message
           end
         end
       end
