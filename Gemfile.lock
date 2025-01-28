@@ -1,19 +1,44 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    Ascii85 (2.0.1)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    afm (0.2.2)
+    amatch (0.4.1)
+      mize
+      tins (~> 1.0)
     array_include_methods (1.5.1)
     ast (2.4.2)
     awesome_print (1.9.2)
     baran (0.1.12)
+    base64 (0.2.0)
+    bigdecimal (3.1.9)
     chunky_png (1.4.0)
     color (1.8)
+    complex_config (0.22.2)
+      base64
+      json
+      mize (~> 0.3, >= 0.3.4)
+      tins
+    connection_pool (2.5.0)
+    csv (3.3.2)
+    documentrix (0.0.0)
+      infobar (~> 0.8)
+      json (~> 2.0)
+      kramdown-ansi (~> 0.0, >= 0.0.1)
+      more_math (~> 1.1)
+      numo-narray (~> 0.9)
+      redis (~> 5.0)
+      sqlite-vec (~> 0.0)
+      sqlite3 (~> 2.0, >= 2.0.1)
+      tins (~> 1.34)
     equalizer (0.0.11)
     ethon (0.16.0)
       ffi (>= 1.15.0)
+    excon (1.2.3)
     facets (3.1.0)
-    faraday (2.12.1)
+    faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -22,21 +47,14 @@ GEM
     faraday-typhoeus (1.1.0)
       faraday (~> 2.0)
       typhoeus (~> 1.4)
-    ffi (1.17.0)
-    ffi (1.17.0-aarch64-linux-gnu)
-    ffi (1.17.0-aarch64-linux-musl)
-    ffi (1.17.0-arm-linux-gnu)
-    ffi (1.17.0-arm-linux-musl)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86-linux-gnu)
-    ffi (1.17.0-x86-linux-musl)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
-    ffi (1.17.0-x86_64-linux-musl)
+    ffi (1.17.1-arm64-darwin)
+    ffi (1.17.1-x86_64-darwin)
+    ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.1-x86_64-linux-musl)
     glimmer (2.8.0)
       array_include_methods (>= 1.4.0, < 1.6.0)
       facets (>= 3.1.0, < 4.0.0)
-    glimmer-dsl-libui (0.12.5)
+    glimmer-dsl-libui (0.12.7)
       chunky_png (~> 1.4.0)
       color (~> 1.8)
       equalizer (= 0.0.11)
@@ -50,35 +68,93 @@ GEM
       rouge (>= 3.26.0, < 4.0.0)
       super_module (~> 1.4.1)
       text-table (>= 1.2.4, < 2.0.0)
-    json (2.9.0)
+    hashery (2.1.2)
+    infobar (0.9.0)
+      complex_config (~> 0.10)
+      more_math
+      term-ansicolor (~> 1.4)
+      tins (~> 1.0, >= 1.28.0)
+    json (2.9.1)
     json-schema (4.3.1)
       addressable (>= 2.8)
-    langchainrb (0.19.2)
+    kramdown (2.5.1)
+      rexml (>= 3.3.9)
+    kramdown-ansi (0.0.2)
+      kramdown-parser-gfm (~> 1.1)
+      term-ansicolor (~> 1.11)
+      terminal-table (~> 3.0)
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
+    langchainrb (0.19.3)
       baran (~> 0.1.9)
+      csv
       json-schema (~> 4)
       matrix
       pragmatic_segmenter (~> 0.3.0)
       zeitwerk (~> 2.5)
-    language_server-protocol (3.17.0.3)
+    language_server-protocol (3.17.0.4)
     libui (0.1.2)
     libui (0.1.2-arm64-darwin)
     libui (0.1.2-x86_64-darwin)
-    logger (1.6.2)
+    logger (1.6.5)
     matrix (0.4.2)
     method_source (1.1.0)
+    mime-types (3.6.0)
+      logger
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2025.0107)
+    mize (0.6.1)
+    more_math (1.3.0)
+      mize
+      tins (~> 1.0)
     net-http (0.6.0)
       uri
+    nokogiri (1.18.2-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.2-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.2-x86_64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.2-x86_64-linux-musl)
+      racc (~> 1.4)
+    numo-narray (0.9.2.1)
     ollama-ai (1.3.0)
       faraday (~> 2.10)
       faraday-typhoeus (~> 1.1)
       typhoeus (~> 1.4, >= 1.4.1)
+    ollama-ruby (0.13.0)
+      amatch (~> 0.4.1)
+      complex_config (~> 0.22, >= 0.22.2)
+      documentrix (~> 0.0)
+      excon (~> 1.0)
+      infobar (~> 0.8)
+      json (~> 2.0)
+      kramdown-ansi (~> 0.0, >= 0.0.1)
+      logger (~> 1.0)
+      mime-types (~> 3.0)
+      ostruct (~> 0.0)
+      pdf-reader (~> 2.0)
+      redis (~> 5.0)
+      reverse_markdown (~> 3.0)
+      rss (~> 0.3)
+      search_ui (~> 0.0)
+      term-ansicolor (~> 1.11)
+      tins (~> 1.34)
+      xdg (~> 7.0)
     os (1.1.4)
+    ostruct (0.6.1)
     parallel (1.26.3)
-    parser (3.3.6.0)
+    parser (3.3.7.0)
       ast (~> 2.4.1)
       racc
     pastel (0.8.0)
       tty-color (~> 0.5)
+    pdf-reader (2.13.0)
+      Ascii85 (>= 1.0, < 3.0, != 2.0.0)
+      afm (~> 0.2.1)
+      hashery (~> 2.0)
+      ruby-rc4
+      ttfunk
     perfect-shape (1.0.8)
       equalizer (>= 0.0.11, < 1.1.0)
       matrix (>= 0.4.2, < 1.1.0)
@@ -91,9 +167,18 @@ GEM
     rake (13.2.1)
     rake-tui (0.2.3)
       tty-prompt
-    regexp_parser (2.9.3)
+    redis (5.3.0)
+      redis-client (>= 0.22.0)
+    redis-client (0.23.2)
+      connection_pool
+    regexp_parser (2.10.0)
+    reverse_markdown (3.0.0)
+      nokogiri
+    rexml (3.4.0)
     rouge (3.30.0)
-    rubocop (1.69.1)
+    rss (0.3.1)
+      rexml
+    rubocop (1.71.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -103,12 +188,34 @@ GEM
       rubocop-ast (>= 1.36.2, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.36.2)
+    rubocop-ast (1.37.0)
       parser (>= 3.3.1.0)
     ruby-progressbar (1.13.0)
+    ruby-rc4 (0.1.5)
+    search_ui (0.0.5)
+      amatch (~> 0.0)
+      term-ansicolor (~> 1.0)
+      tins (~> 1.0)
+    sqlite-vec (0.1.6-arm64-darwin)
+    sqlite-vec (0.1.6-x86_64-darwin)
+    sqlite-vec (0.1.6-x86_64-linux)
+    sqlite3 (2.5.0-arm64-darwin)
+    sqlite3 (2.5.0-x86_64-darwin)
+    sqlite3 (2.5.0-x86_64-linux-gnu)
+    sqlite3 (2.5.0-x86_64-linux-musl)
     super_module (1.4.2)
       method_source (>= 0.8.2, < 2.0.0)
+    sync (0.5.0)
+    term-ansicolor (1.11.2)
+      tins (~> 1.0)
+    terminal-table (3.0.2)
+      unicode-display_width (>= 1.1.1, < 3)
     text-table (1.2.4)
+    tins (1.38.0)
+      bigdecimal
+      sync
+    ttfunk (1.8.0)
+      bigdecimal (~> 3.1)
     tty-color (0.6.0)
     tty-cursor (0.7.1)
     tty-prompt (0.23.1)
@@ -121,22 +228,14 @@ GEM
     tty-screen (0.8.2)
     typhoeus (1.4.1)
       ethon (>= 0.9.0)
-    unicode-display_width (3.1.2)
-      unicode-emoji (~> 4.0, >= 4.0.4)
-    unicode-emoji (4.0.4)
+    unicode-display_width (2.6.0)
     uri (1.0.2)
     wisper (2.0.1)
+    xdg (7.1.2)
     zeitwerk (2.7.1)
 
 PLATFORMS
-  aarch64-linux-gnu
-  aarch64-linux-musl
-  arm-linux-gnu
-  arm-linux-musl
   arm64-darwin
-  ruby
-  x86-linux-gnu
-  x86-linux-musl
   x86_64-darwin
   x86_64-linux-gnu
   x86_64-linux-musl
@@ -146,7 +245,8 @@ DEPENDENCIES
   glimmer-dsl-libui
   langchainrb (~> 0.19.2)
   ollama-ai
+  ollama-ruby
   rubocop
 
 BUNDLED WITH
-   2.5.22
+   2.5.23
